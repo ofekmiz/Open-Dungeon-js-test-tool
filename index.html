@@ -19,6 +19,7 @@
 </body>
 
 </html>
+
 <script type='text/javascript'>
 	const jsonExample = {
 
@@ -122,17 +123,17 @@
 	}
 
 	function downloadImage() {
-		var link = document.createElement("a");
-		link.download = "image.png";
 		var canvas = document.getElementById('canvas-Source01');
-		canvas.toBlob(function (blob) {
-			link.href = URL.createObjectURL(blob);
-			console.log(blob);
-			console.log(link.href);
-		}, 'image/png')
-		link.click();
+		canvas.toBlob((blob) => {
+			const url = URL.createObjectURL(blob);
+			var link = document.createElement("a");
+			link.href = url;
+			link.download = "image.png";
+			link.click();
+		});
 	}
 </script>
+
 <style>
 	#inputContainer {
 		width: 100%;
