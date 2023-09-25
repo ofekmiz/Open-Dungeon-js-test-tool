@@ -9,9 +9,12 @@
 	<div id="inputContainer">
 		<textarea id="textInput" placeholder="Enter Data Text Here"></textarea>
 		<div>
-			<input type="button" value="draw pinker" name="draw pinker" onClick="drawPinkerText()" /><br>
-			<input type="button" value="draw json" name="draw json" onClick="drawJsonText()" /><br>
+			<input type="button" value="draw pinker" name="draw pinker" onClick="drawPinkerText()" />
+			<input type="button" value="pinker example" name="copy pinker example" onClick="drawPinkerExample()" /><br>
+			<input type="button" value="draw json" name="draw json" onClick="drawJsonText()" />
+			<input type="button" value="json example" name="copy pinker example" onClick="drawJsonExample()" /><br>
 			<input type="button" value="download Image" name="download Image" onClick="downloadImage()" />
+			<input type="button" value="clear" name="clear" onClick="clearCanvas()" />
 		</div>
 	</div>
 	<pre id='Source01' class='pinker'></pre>
@@ -122,13 +125,27 @@
 		dungeon.drawJson('Source01', text);
 	}
 
+	function drawJsonExample() {
+		document.getElementById('textInput').value = jsonExample;
+		dungeon.drawJson('Source01', jsonExample);
+	}
+
+	function drawPinkerExample() {
+		document.getElementById('textInput').value = pinkerExample;
+		dungeon.drawPinker('Source01', pinkerExample);
+	}
+	function clearCanvas() {
+		document.getElementById('textInput').value = "";
+		dungeon.drawPinker('Source01',"");
+	}
+
 	function downloadImage() {
 		var canvas = document.getElementById('canvas-Source01');
 		canvas.toBlob((blob) => {
 			const url = URL.createObjectURL(blob);
 			var link = document.createElement("a");
 			link.href = url;
-			link.download = "image.png";
+			link.download = "open_dungeon_map.png";
 			link.click();
 		});
 	}
