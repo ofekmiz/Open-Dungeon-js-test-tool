@@ -6,15 +6,28 @@
 </head>
 
 <body>
+	<textarea id="textInput" name="textInput"></textarea>
+	<input type="button" value="draw pinker" name="draw pinker" onClick="drawPinkerText()"/>
+	<!-- <input type="button" value="draw json" name="draw json" onClick="drawJsonText()"/> -->
+
 	<pre id='Source01' class='pinker'>
 		Layout:
 			[A][B]
 		Relate:
 			[A]->[B]
-		</pre>
+	</pre>
 </body>
 
 </html>
 <script type='text/javascript'>
-	dungeon.draw('Source01');
+	dungeon.drawPinker('Source01', pinkerExample);
+	
+	function drawPinkerText(){
+		const text = document.getElementById('textInput').value;
+		dungeon.drawPinker('Source01', text);	
+	}
+	function drawJsonText(){
+		const text = document.getElementById('textInput').value;
+		dungeon.drawJson('Source01', text);	
+	}
 </script>

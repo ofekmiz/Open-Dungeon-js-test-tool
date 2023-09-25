@@ -87,9 +87,15 @@ Layout:
                     [Obj]
                     [Obj]
 `;
-dungeon.draw = function (id, json) {
+dungeon.drawJson = function (id, json) {
   const elem = document.getElementById(id);
-  elem.innerHTML = pinkerExample;
+  elem.innerHTML = convertJsonToPinker(json);
+  pinker.render();
+};
+
+dungeon.drawPinker = function (id, pinkerText) {
+  const elem = document.getElementById(id);
+  elem.innerHTML = pinkerText;
   pinker.render();
 };
 
